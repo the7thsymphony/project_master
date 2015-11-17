@@ -19,6 +19,5 @@ class Project < ActiveRecord::Base
     #   ajouter erreur
   end
 
-
 end
 
