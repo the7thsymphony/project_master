@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117112840) do
+ActiveRecord::Schema.define(version: 20151117114339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applicants", force: :cascade do |t|
+    t.boolean  "hired"
+    t.integer  "rating"
+    t.string   "comment"
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "applicants", ["job_id"], name: "index_applicants_on_job_id", using: :btree
+  add_index "applicants", ["user_id"], name: "index_applicants_on_user_id", using: :btree
 
   create_table "domains", force: :cascade do |t|
     t.string   "label"
@@ -30,6 +43,31 @@ ActiveRecord::Schema.define(version: 20151117112840) do
   end
 
   add_index "jobs", ["domain_id"], name: "index_jobs_on_domain_id", using: :btree
+
+  create_table "project_jobs", force: :cascade do |t|
+    t.boolean  "status"
+    t.integer  "number"
+    t.integer  "applicant_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "project_jobs", ["applicant_id"], name: "index_project_jobs_on_applicant_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "media"
+    t.string   "localisation"
+    t.integer  "status"
+    t.integer  "project_job_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "projects", ["project_job_id"], name: "index_projects_on_project_job_id", using: :btree
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -57,6 +95,11 @@ ActiveRecord::Schema.define(version: 20151117112840) do
   add_index "users", ["job_id"], name: "index_users_on_job_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "applicants", "jobs"
+  add_foreign_key "applicants", "users"
   add_foreign_key "jobs", "domains"
+  add_foreign_key "project_jobs", "applicants"
+  add_foreign_key "projects", "project_jobs"
+  add_foreign_key "projects", "users"
   add_foreign_key "users", "jobs"
 end
