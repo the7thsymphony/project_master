@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117135246) do
+ActiveRecord::Schema.define(version: 20151117171736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,11 @@ ActiveRecord::Schema.define(version: 20151117135246) do
     t.integer  "rating"
     t.string   "comment"
     t.integer  "user_id"
-    t.integer  "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "status"
   end
 
-  add_index "applicants", ["job_id"], name: "index_applicants_on_job_id", using: :btree
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id", using: :btree
 
   create_table "domains", force: :cascade do |t|
@@ -56,11 +55,11 @@ ActiveRecord::Schema.define(version: 20151117135246) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "project_jobs", force: :cascade do |t|
-    t.boolean  "status"
     t.integer  "number"
     t.integer  "applicant_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "job_id"
   end
 
   add_index "project_jobs", ["applicant_id"], name: "index_project_jobs_on_applicant_id", using: :btree
@@ -70,7 +69,6 @@ ActiveRecord::Schema.define(version: 20151117135246) do
     t.string   "description"
     t.string   "media"
     t.string   "localisation"
-    t.integer  "status"
     t.integer  "project_job_id"
     t.integer  "user_id"
     t.datetime "created_at",     null: false
@@ -111,7 +109,6 @@ ActiveRecord::Schema.define(version: 20151117135246) do
   add_index "users", ["job_id"], name: "index_users_on_job_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "applicants", "jobs"
   add_foreign_key "applicants", "users"
   add_foreign_key "jobs", "domains"
   add_foreign_key "messages", "projects"
