@@ -18,4 +18,7 @@ class User < ActiveRecord::Base
    end
   end
 
+  has_many :jobs
+  has_many :projects
+  belongs_to :applicant
 end
