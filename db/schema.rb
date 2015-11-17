@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117114339) do
+ActiveRecord::Schema.define(version: 20151117114500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20151117114339) do
   end
 
   add_index "jobs", ["domain_id"], name: "index_jobs_on_domain_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["project_id"], name: "index_messages_on_project_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "project_jobs", force: :cascade do |t|
     t.boolean  "status"
@@ -98,6 +109,8 @@ ActiveRecord::Schema.define(version: 20151117114339) do
   add_foreign_key "applicants", "jobs"
   add_foreign_key "applicants", "users"
   add_foreign_key "jobs", "domains"
+  add_foreign_key "messages", "projects"
+  add_foreign_key "messages", "users"
   add_foreign_key "project_jobs", "applicants"
   add_foreign_key "projects", "project_jobs"
   add_foreign_key "projects", "users"
