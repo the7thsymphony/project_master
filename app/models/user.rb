@@ -21,4 +21,9 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :projects
   belongs_to :applicant
+
+   validates :first_name, presence: true
+   validates :last_name, presence: true
+   validates :photo, presence: true
+
 end
