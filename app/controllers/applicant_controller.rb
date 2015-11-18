@@ -1,14 +1,22 @@
 class ApplicantController < ApplicationController
 
-  def show
-
-  end
-
-  def delete
-
-  end
-
   def index
 
+    @applicants = Applicant.all
+
   end
-end
+
+  def show
+
+    @applicant = Applicant.new
+
+  end
+
+  def destroy
+    @applicant.destroy
+  end
+
+  end
+
+
+
