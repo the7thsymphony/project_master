@@ -1,6 +1,6 @@
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
 
-before_action :find_project, only: [:show, :destroy]
+  before_action :find_project, only: [:show, :destroy]
 
   def index
     @projects = Project.all
@@ -20,6 +20,7 @@ before_action :find_project, only: [:show, :destroy]
       redirect_to @project
     else
       render :new
+    end
   end
 
 
@@ -40,7 +41,6 @@ before_action :find_project, only: [:show, :destroy]
 
   def project_params
     params.require(:project).permit(:title, :description, :media)
-
   end
 
 end
