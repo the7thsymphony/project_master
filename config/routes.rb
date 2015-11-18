@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-resources :message , only[:new, :create, :edit, :delete, :index]
+  root "home#index"
 
-resources :applicant , only[:show, :delete, :index]
+  resources :projects , only: [:new, :create,:show, :edit, :delete, :index] do
+    resources :applicants , only: [:show, :delete, :index]
+  end
 
-resources :project , only[:new, :create,:show, :edit, :delete, :index]
+  resources :messages, only: [:new, :create, :edit, :delete, :index]
 
-resources :user , only[:new, :create,:show, :edit, :delete]
-
+  resources :users , only: [:new, :create,:show, :edit, :delete]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
-  root to: "home#index"
 
 end
