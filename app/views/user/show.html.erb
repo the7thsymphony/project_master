@@ -1,2 +1,19 @@
 <h1>User#show</h1>
 <p>Find me in app/views/user/show.html.erb</p>
+
+<div class="text-center">
+  <h1><%= @user.firt_name %><%= @user.last_name %></h1>
+  <%= image_tag current_user.picture %>
+  <ul class="list-unstyled">
+    <li>
+      Age : <%= user.birthdate %>
+    </li>
+    <li>
+      Description : <%= user.description %>
+    </li>
+    <li>
+      Adress : <%= user.adress %>
+    </li>
+  </ul>
+  <br><br>
+</div>

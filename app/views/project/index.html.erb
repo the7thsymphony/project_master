@@ -1,0 +1,9 @@
+<div>
+  <% project.each do %>
+  <%= @project.title %>
+  <%= @project.description %>
+  <ul>
+  <li><%= @project.project_jobs %></li>
+  </ul>
+  <% end %>
+</div>
