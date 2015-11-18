@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   has_many :users, through: :applicants
   validates :title, presence: true
   validates :description, presence: true
-  validates :localisation, presence: true
+  # validates :localisation, presence: true
 
 
   def is_a_valid_status

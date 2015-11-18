@@ -24,13 +24,9 @@ class ProjectsController < ApplicationController
   end
 
 
-  def edit
-    @project = Project.find(params[:id])
-  end
-
   def destroy
     @project.destroy
-    redirect_to project_path
+    redirect_to projects_path
   end
 
   private
@@ -40,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :media)
+    params.require(:project).permit(:title, :description)
   end
 
 end
