@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   has_many :project_jobs
   has_many :messages
   has_many :applicants, through: :project_jobs
-  has_many :users, throught: :applicants
+  has_many :users, through: :applicants
   validates :title, presence: true
   validates :description, presence: true
   validates :localisation, presence: true
