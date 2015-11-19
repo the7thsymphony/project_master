@@ -1,1 +1,42 @@
 @import "home";
+
+ul {
+  list-style-type: none;
+}
+
+ul li { display: inline; }
+
+li {
+
+}
+
+.project_container {
+  background-color: grey;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.title-project {
+  text-align: center;
+  color: white;
+}
+
+.project-description {
+  padding: 10px;
+  text-align: center;
+}
+
+.rounded-job {
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  width: 130px;
+  height: 130px;
+
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}

@@ -86,15 +86,15 @@ end
 
 
 puts "- Seed Projects"
-owners = User.limit(3)
+owners = User.limit(6)
 
 owners.each do |owner|
-  owner.projects.create(title: Faker::Company.catch_phrase, description: Faker::Lorem.paragraph)
+  owner.projects.create(title: Faker::Book.title, description: Faker::Lorem.paragraph)
 end
 
 puts "- Seed ProjectJobs"
-Project.limit(2).each do |project|
-  (1..5).to_a.sample.times do
-  project.project_jobs.create(job: Job.order("RANDOM()").first, number: (1..3).to_a.sample)
+Project.limit(6).each do |project|
+  (1..6).to_a.sample.times do
+  project.project_jobs.create(job: Job.order("RANDOM()").first, number: (1..2).to_a.sample)
   end
 end
