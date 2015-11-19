@@ -6,7 +6,7 @@
     <div class="title-project">
       <%= project.title %>
     </div>
-      <%=link_to "See the project", project_path(@project) %>
+      <%=link_to "See the project", project_path(project) %>
     <div class="project-description">
       <%= project.description %>
     </div>
@@ -15,7 +15,7 @@
       <% project.jobs.each do |job| %>
       <div class="col-md-4">
         <div class="rounded-job">
-         <span><%= job.name %></span>
+         <div class='div-span'><%= job.name %></div>
         </div>
       </div>
       <% end %>

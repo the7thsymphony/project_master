@@ -35,8 +35,8 @@ li {
 
 }
 
-span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
+.div-span {
+  position: relative;
+  top:42%;
+/* line-height: 130px;*/
 }
