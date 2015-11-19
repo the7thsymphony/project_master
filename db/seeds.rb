@@ -94,7 +94,7 @@ end
 
 puts "- Seed ProjectJobs"
 Project.limit(2).each do |project|
-  (1..5).to_a.sample.times do ||
-    project.projectjobs.create(job: Job.order("RANDOM()").first, number: (1..3).to_a.sample)
+  (1..5).to_a.sample.times do
+  project.project_jobs.create(job: Job.order("RANDOM()").first, number: (1..3).to_a.sample)
   end
 end

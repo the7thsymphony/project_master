@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :jobs
   has_many :projects
-  belongs_to :applicant
+  has_many :applicants
+  has_many :project_jobs, through: :applicants
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true
