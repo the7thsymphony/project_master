@@ -4,7 +4,6 @@ class ProjectJob < ActiveRecord::Base
   has_many :jobs, through: :applicants
 
   validates :job, presence: true
-  validates :applicant, presence: true
   validates :number, presence: true
 
 end
