@@ -23,6 +23,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
+  gem 'rails-erd'
+  gem 'faker'
 end
 
 group :production do
