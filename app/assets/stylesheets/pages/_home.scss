@@ -2,3 +2,23 @@
  * SASS code SPECIFIC TO your home page
  * (margin/padding adjustments, background image, etc..)
  * ------------------------------------- */
+
+.background {
+  background-image: url("background.jpeg");
+  background-size: cover;
+}
+
+.filter-background {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.title-logo {
+  font-size: 100px;
+  font-family: 'Shadows Into Light', cursive;
+  color: #F7F7F7;
+  text-align: center;
+  padding: 250px 0;
+  text-shadow:0 0 100px rgba(0,0,0,0.7);
+/*  position: relative;
+  margin-top: 50%;*/
+}
