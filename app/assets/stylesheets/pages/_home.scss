@@ -29,4 +29,17 @@
   padding:20px;
   font-size: 30px;
 
+  a {
+    color: white;
+    text-transform: none;
+
+    &:hover {
+      text-transform: none;
+    }
+  }
+}
+
+.btn-danger {
+background-color:#FD8A17;
+border-color:#FD8A17;
 }
