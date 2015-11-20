@@ -15,7 +15,7 @@
       <% project.jobs.each do |job| %>
       <div class="col-md-4 text-center">
 
-        <div class="rounded-job" style="background-image: url('/assets/<%= job.picture %>');">
+        <div class="rounded-job" style="background-image: url('<%= image_path(job.picture) %>');">
          <div class='div-span'><%= job.name %></div>
         </div>
       </div>
