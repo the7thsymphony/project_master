@@ -1,5 +1,6 @@
 class ProjectJobController < ApplicationController
   def show
+    @project_job = project_job.find(params[:id])
   end
 
   def new
@@ -11,3 +12,5 @@ class ProjectJobController < ApplicationController
   def destroy
   end
 end
+
+

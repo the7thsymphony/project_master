@@ -31,19 +31,19 @@ domains = [
   {
     label: "video",
     jobs: [
-      { name: "cameraman" },
-      { name: "perchiste" },
-      { name: "assistant-monteur" },
-      { name: "monteur" },
-      { name: "figurant" }
+      { name: "cameraman", picture: "monteur.jpg" },
+      { name: "perchiste", picture: "perchiste.jpg" },
+      { name: "assistant-monteur", picture: "monteur-video.png" },
+      { name: "monteur", picture: "http://www.5dimension.fr/Production-Audiovisuelle/monteur-video.gif" },
+      { name: "figurant", picture: "figurant.jpg" }
     ]
   },
   {
     label: "musique",
     jobs: [
-      { name: "compositeur" },
-      { name: "chanteur" },
-      { name: "guitariste" }
+      { name: "compositeur", picture: "compositeur.png" },
+      { name: "chanteur", picture: "chanteur.jpg" },
+      { name: "guitariste", picture: "guitariste.jpg" }
     ]
   }
 ]
@@ -53,7 +53,7 @@ puts "- Seed Domains and Jobs"
 domains.each do |domain|
   d = Domain.create(label: domain[:label])
   domain[:jobs].each do |job|
-    job = Job.create(name: job[:name], domain: d)
+    job = Job.create(name: job[:name], picture: job[:picture], domain: d)
   end
 end
 
@@ -93,8 +93,9 @@ owners.each do |owner|
 end
 
 puts "- Seed ProjectJobs"
+
 Project.limit(6).each do |project|
   (1..6).to_a.sample.times do
-  project.project_jobs.create(job: Job.order("RANDOM()").first, number: (1..2).to_a.sample)
+    project.project_jobs.create(job: Job.order("RANDOM()").first, number: (1..2).to_a.sample)
   end
 end
