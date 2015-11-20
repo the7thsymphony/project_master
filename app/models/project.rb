@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :messages
   has_many :project_jobs
+  has_many :jobs, through: :project_jobs
   has_many :applicants, through: :project_jobs
   has_many :users, through: :applicants
   validates :title, presence: true

@@ -1,9 +1,26 @@
-<div>
-  <% @projects.each do %>
-  <%= @project.title %>
-  <%= @project.description %>
-  <ul>
-  <li><%= @project.project_jobs %></li>
-  </ul>
-  <% end %>
+
+<% @projects.each do |project|%>
+
+<div class="project_container">
+  <div class="container">
+    <div class="title-project">
+      <%= project.title %>
+    </div>
+      <%=link_to "See the project", project_path(project) %>
+    <div class="project-description">
+      <%= project.description %>
+    </div>
+    <div class="row">
+
+      <% project.jobs.each do |job| %>
+      <div class="col-md-4 text-center">
+
+        <div class="rounded-job" style="background-image: url('/assets/<%= job.picture %>');">
+         <div class='div-span'><%= job.name %></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+<% end %>
